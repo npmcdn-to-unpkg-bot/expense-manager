@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  input(type='text' ng-model='name')
+  p {{name}}
+  div(ng-controller='MyController')
+    h1 {{author.name}}
+    p {{author.title + ', ' + author.company}}
+
+
+  script(src='/javascripts/MyController.js')

@@ -1,0 +1,24 @@
+div(ng-if="expenses !== False")
+    span List of expenses
+    hr
+    div
+        input(type="text", placeholder="Search for expenses" autofocus ng-model="query")
+        label Sort By
+        select(ng-model="expenseOrder")
+            option(value="expense" selected) Expense
+            option(value="expense_time") Time
+        label Asc
+        input(type="radio" ng-model="direction" name="direction" checked)
+        label Desc
+        input(type="radio" ng-model="direction" name="direction" value="reverse")
+    hr
+    ul
+        li(ng-repeat="expense in expenses | filter: query | orderBy: expenseOrder:direction")
+            div
+                h3
+                    a(href="#/details/{{expense.id}}") {{expense.expense}}
+                p {{expense.description}}
+                p {{expense.expense_time}}
+div(ng-if="expenses == False")
+    span No expenses available
+    hr

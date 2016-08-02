@@ -1,0 +1,12 @@
+h3 Add new expense
+form
+    div
+        input(type="number" ng-model="expense.expense" placeholder="Expense Amount" required)
+    div
+        input(type="text" ng-model="expense.description" placeholder="Description" required)
+    div
+        input(type="datetime-local" ng-model="expense.expense_time" placeholder="Time" required)
+    div
+        input(type="submit" value="Save" ng-click="save(expense)")
+
+a(href="#/list") back

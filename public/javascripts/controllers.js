@@ -16,7 +16,6 @@ expenseControllers.controller('DetailsController', ['$scope', '$http', '$routePa
 
     $http.get('/api/expenses/'+id)
         .success(function (data) {
-            console.log(data);
             $scope.expense = data;
         })
         .error(function (error) {
@@ -34,14 +33,5 @@ expenseControllers.controller('AddController', ['$scope', '$http', '$window', fu
             .error(function () {
                 console.log(error);
             });
-    }
-
-    // $http.get('/api/expenses/'+id)
-    //     .success(function (data) {
-    //         console.log(data);
-    //         $scope.expense = data;
-    //     })
-    //     .error(function (error) {
-    //         console.log(error);
-    //     });
+    };
 }]);

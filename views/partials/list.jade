@@ -1,24 +1,36 @@
 div(ng-if="expenses !== False")
-    span List of expenses
+    h3.title.is-3 List of expenses
     hr
     div
-        input(type="text", placeholder="Search for expenses" autofocus ng-model="query")
-        label Sort By
-        select(ng-model="expenseOrder")
-            option(value="expense" selected) Expense
-            option(value="expense_time") Time
-        label Asc
-        input(type="radio" ng-model="direction" name="direction" checked)
-        label Desc
-        input(type="radio" ng-model="direction" name="direction" value="reverse")
+        input.input.is-primary(type="text", placeholder="Search for expenses" autofocus ng-model="query")
+        label.label Sort By
+        p.control
+            span.select
+                select(ng-model="expenseOrder")
+                    option(value="expense" selected) Expense
+                    option(value="expense_time") Time
+            label.radio
+                input(type="radio" ng-model="direction" name="direction" checked)
+                span Asc
+            label.radio
+                input(type="radio" ng-model="direction" name="direction" value="reverse")
+                span Desc
     hr
-    ul
-        li(ng-repeat="expense in expenses | filter: query | orderBy: expenseOrder:direction")
-            div
-                h3
-                    a(href="#/details/{{expense.id}}") {{expense.expense}}
-                p {{expense.description}}
-                p {{expense.expense_time}}
+    table.table.is-striped
+        thead
+            tr
+                th #
+                th Description
+                th Time
+                th Amount
+        tbody
+            tr(ng-repeat="expense in expenses | filter: query | orderBy: expenseOrder:direction")
+                td {{$index + 1}}
+                td 
+                    a(href="#/details/{{expense.id}}") {{expense.description}}
+                td {{expense.expense_time}}
+                td Rs. {{expense.expense}}
+
 div(ng-if="expenses == False")
-    span No expenses available
+    h3.title.is-3 No expenses available
     hr

@@ -1,8 +1,13 @@
 extends layout
 
 block content
-  div
-    a(href="#/add") Add Expense
-  div(ng-view)
+  header.nav
+    .container
+      .nav-left.nav-menu
+        a.nav-item(href="#/list") Expenses          
+        a.nav-item(href="#/add") Add          
+  .columns.is-mobile
+    .column.is-half.is-offset-one-quarter
+      div(ng-view)
     
   
